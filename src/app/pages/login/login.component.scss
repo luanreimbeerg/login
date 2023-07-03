@@ -1,0 +1,20 @@
+.login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+
+  .form-field {
+    display: flex;
+    flex-direction: column;
+
+    .mat-form-field {
+      min-width: 18.75rem;
+    }
+
+    .icon {
+      color: #c1c1c4;
+    }
+  }
+}

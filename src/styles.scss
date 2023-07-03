@@ -1,1 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import "./assets/styles/components/custom-form-field";
+
+html,
+body {
+  height: 100%;
+  background-color: #121214;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  width: calc(100vw - (100vw - 100%));
+}
