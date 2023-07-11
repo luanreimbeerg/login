@@ -5,9 +5,10 @@
       <mat-label class="text-white">Endereço de e-mail</mat-label>
       <mat-form-field class="custom-form-field" appearance="outline">
         <input
-          type="tel"
+          type="text"
           matInput
           placeholder="Digite seu endereço de e-mail"
+          required
         />
         <mat-icon class="icon" matSuffix>mail</mat-icon>
       </mat-form-field>
@@ -15,7 +16,12 @@
     <div class="form-field">
       <mat-label class="text-white">Sua senha</mat-label>
       <mat-form-field class="custom-form-field" appearance="outline">
-        <input type="tel" matInput placeholder="Digite sua senha" />
+        <input
+          type="password"
+          matInput
+          placeholder="Digite sua senha"
+          required
+        />
         <mat-icon class="icon" matSuffix>lock</mat-icon>
       </mat-form-field>
     </div>
