@@ -1,6 +1,6 @@
 <section class="login">
   <h1 class="text-3xl font-bold text-white text-center">Entrar</h1>
-  <form>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
     <div class="form-field">
       <mat-label class="text-white">Endereço de e-mail</mat-label>
       <mat-form-field class="custom-form-field" appearance="outline">
@@ -9,8 +9,15 @@
           matInput
           placeholder="Digite seu endereço de e-mail"
           required
+          formControlName="email"
         />
         <mat-icon class="icon" matSuffix>mail</mat-icon>
+        <mat-error *ngIf="hasError('email', 'required', form)">
+          Campo <strong>Email</strong> obrigatório!
+        </mat-error>
+        <mat-error *ngIf="hasError('email', 'email', form)">
+          <strong>E-mail</strong> inválido!
+        </mat-error>
       </mat-form-field>
     </div>
     <div class="form-field">
@@ -21,11 +28,22 @@
           matInput
           placeholder="Digite sua senha"
           required
+          formControlName="password"
         />
         <mat-icon class="icon" matSuffix>lock</mat-icon>
+        <mat-error *ngIf="hasError('password', 'required', form)">
+          Campo <strong>Senha</strong> obrigatório!
+        </mat-error>
       </mat-form-field>
     </div>
 
-    <button mat-raised-button class="bg-purple w-full">Fazer login</button>
+    <button
+      type="submit"
+      [disabled]="!form.valid"
+      mat-raised-button
+      class="bg-purple w-full"
+    >
+      Fazer login
+    </button>
   </form>
 </section>

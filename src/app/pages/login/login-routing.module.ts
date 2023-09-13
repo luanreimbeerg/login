@@ -10,7 +10,6 @@ const routes: Routes = [
     component: LoginComponent,
     canActivate: [LoginGuardService],
   },
-  { path: '', redirectTo: 'signin', pathMatch: 'full' },
 ];
 
 @NgModule({
