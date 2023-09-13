@@ -4,11 +4,11 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Figma [FIGMA](https://www.figma.com/file/pgCStvsBssXZUUfPIG2fa6/Login?type=design&mode=design&t=HPPyfmxCHwASjh12-1)
 
-# generate component 
+## Generate component 
 
 ng g m caminho --routing --route nome-component --module app-routing.module.ts
 
-# Generate component child
+## Generate component child
 
 ```ts
     ng g m caminho/nome-component
