@@ -19,8 +19,7 @@ export class LoginGuardService implements CanActivate {
     state: RouterStateSnapshot
   ): Observable<boolean> | Promise<boolean> | boolean {
     if (this.sessionService.hasJwt()) {
-      const url = window.location.pathname.split('/')[1];
-      this.router.navigate([`${url}/home`]);
+      this.router.navigate(['/home']);
       return false;
     } else {
       return true;
