@@ -1,14 +1,16 @@
-/* You can add global styles to this file, and also import other style files */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @import "./assets/styles/components/custom-form-field";
+@import "./assets/styles/components/custom-inputs-rules";
+@import "./assets/styles/components/custom-button";
 
 html,
 body {
   height: 100%;
   background-color: #121214;
+  color: white;
 }
 
 body {

@@ -1,0 +1,12 @@
+input[type="password"]::-webkit-contacts-auto-fill-button {
+  display: none;
+  visibility: hidden;
+}
+input[type="password"]::-ms-clear {
+  display: none;
+  visibility: hidden;
+}
+input[type="password"]::-ms-reveal {
+  display: none;
+  visibility: hidden;
+}

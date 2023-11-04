@@ -24,24 +24,35 @@
       <mat-label class="text-white">Sua senha</mat-label>
       <mat-form-field class="custom-form-field" appearance="outline">
         <input
-          type="password"
+          [type]="hide ? 'text' : 'password'"
           matInput
           placeholder="Digite sua senha"
           required
           formControlName="password"
         />
-        <mat-icon class="icon" matSuffix>lock</mat-icon>
+        <mat-icon *ngIf="!hide" matSuffix (click)="hidePassword()"
+          >lock</mat-icon
+        >
+        <mat-icon *ngIf="hide" matSuffix (click)="hidePassword()"
+          >lock_open</mat-icon
+        >
         <mat-error *ngIf="hasError('password', 'required', form)">
           Campo <strong>Senha</strong> obrigatório!
         </mat-error>
+        <mat-hint
+          *ngIf="!hasError('password', 'required', form) && validPassWord"
+        >
+          Campo <strong>E-mail</strong> ou <strong>Senha</strong> inválido
+        </mat-hint>
       </mat-form-field>
     </div>
 
     <button
       type="submit"
-      [disabled]="!form.valid"
+      [disabled]="!form.valid || loading"
       mat-raised-button
       class="bg-purple w-full"
+      [class.spinner]="loading"
     >
       Fazer login
     </button>
