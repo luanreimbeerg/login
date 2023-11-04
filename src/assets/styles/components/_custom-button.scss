@@ -1,0 +1,62 @@
+@keyframes spinner {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.spinner:before {
+  content: "";
+  box-sizing: border-box;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 20px;
+  height: 20px;
+  margin-top: -10px;
+  margin-left: -10px;
+  border-radius: 50%;
+  border: 2px solid white;
+  border-top-color: white;
+  border-bottom-color: white;
+  animation: spinner 0.8s linear infinite;
+}
+
+.spinner-suffix {
+  width: 15px !important;
+  height: 15px !important;
+}
+
+@keyframes field-spinner {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.field-spinner:before {
+  content: "";
+  box-sizing: border-box;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: inherit;
+  height: inherit;
+  margin-top: -10px;
+  margin-left: -10px;
+  border-radius: 50%;
+  border: 2px solid white;
+  border-top-color: white;
+  border-bottom-color: white;
+  animation: spinner 0.8s linear infinite;
+}
+
+.spin {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: unset !important;
+  min-height: unset !important;
+  width: 20px;
+  height: 20px;
+  padding: 0 !important;
+  pointer-events: none;
+}
