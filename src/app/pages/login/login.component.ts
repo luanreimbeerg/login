@@ -13,6 +13,9 @@ import { StorageService } from '../shared/services/storage.service';
 })
 export class LoginComponent implements OnInit {
   public form!: FormGroup;
+  public validPassWord: boolean = false;
+  public hide: boolean = false;
+  public loading: boolean = false;
 
   public hasError!: (
     controlName: string,
@@ -38,8 +41,19 @@ export class LoginComponent implements OnInit {
     });
   }
 
+  public hidePassword(): void {
+    this.hide = !this.hide;
+  }
+
   onSubmit(): void {
-    this.storageService.setItem('bearer', 'Bearer 12');
-    this.router.navigate(['/home']);
+    this.loading = true;
+    if (this.form.get('password')?.value === 'Test@1234') {
+      this.storageService.setItem('bearer', 'Bearer 12');
+      this.router.navigate(['/home']);
+      this.loading = false;
+    } else {
+      this.validPassWord = true;
+      this.loading = false;
+    }
   }
 }
