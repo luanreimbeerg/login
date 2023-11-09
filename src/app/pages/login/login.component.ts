@@ -49,7 +49,7 @@ export class LoginComponent implements OnInit {
     this.loading = true;
     if (this.form.get('password')?.value === 'Test@1234') {
       this.storageService.setItem('bearer', 'Bearer 12');
-      this.router.navigate(['/home']);
+      this.router.navigate(['/dashboard']);
       this.loading = false;
     } else {
       this.validPassWord = true;

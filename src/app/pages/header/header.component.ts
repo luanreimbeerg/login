@@ -1,7 +1,6 @@
-import { SessionService } from './../../shared/services/session.service';
-import { StorageService } from './../../shared/services/storage.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { SessionService } from '../shared/services/session.service';
 
 @Component({
   selector: 'app-header',
@@ -13,8 +12,12 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {}
 
+  public redirectSelectDog(): void {
+    this.router.navigate(['/select-dog']);
+  }
+
   public navegateHome(): void {
-    this.router.navigate(['/home']);
+    this.router.navigate(['/dashboard']);
   }
 
   public logout(): void {

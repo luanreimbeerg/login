@@ -1,3 +1,4 @@
+import { LayoutModule } from './pages/layout/layout.module';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
@@ -8,11 +9,16 @@ const routes: Routes = [
       import('./pages/login/login.module').then((m) => m.LoginModule),
   },
   {
-    path: 'home',
+    path: 'dashboard',
     loadChildren: () =>
-      import('./pages/home/home.module').then((m) => m.HomeModule),
+      import('./pages/layout/layout.module').then((m) => m.LayoutModule),
   },
   { path: '', redirectTo: 'signin', pathMatch: 'full' },
+  {
+    path: 'layout',
+    loadChildren: () =>
+      import('./pages/layout/layout.module').then((m) => m.LayoutModule),
+  },
   { path: '**', redirectTo: 'signin', pathMatch: 'full' },
 ];
 
