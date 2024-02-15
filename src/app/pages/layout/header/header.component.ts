@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { SessionService } from '../shared/services/session.service';
+
+import { SessionService } from '../../../_shared/services/session.service';
+import { StorageService } from '../../../_shared/services/storage.service';
 
 @Component({
   selector: 'app-header',
@@ -8,7 +10,13 @@ import { SessionService } from '../shared/services/session.service';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
-  constructor(private router: Router, private sessionService: SessionService) {}
+  public name: string = this.storageService.getItem('name');
+
+  constructor(
+    private router: Router,
+    private sessionService: SessionService,
+    private storageService: StorageService
+  ) {}
 
   ngOnInit(): void {}
 

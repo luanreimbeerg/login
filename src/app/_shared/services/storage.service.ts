@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 
 import { Subject, Observable } from 'rxjs';
 
-import { environment } from '../../../../environments/environment';
+import { environment } from '../../../environments/environment';
 
 @Injectable()
 export class StorageService {
@@ -36,5 +36,9 @@ export class StorageService {
   removeAll(): any {
     this.isProduction ? sessionStorage.clear() : localStorage.clear();
     this.storageSub.next('changed');
+  }
+
+  getjwt(jwt: string): any {
+    return JSON.parse(atob(jwt.split('.')[1]));
   }
 }

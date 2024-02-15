@@ -4,8 +4,8 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { SessionService } from './pages/shared/services/session.service';
-import { StorageService } from './pages/shared/services/storage.service';
+import { SessionService } from './_shared/services/session.service';
+import { StorageService } from './_shared/services/storage.service';
 
 @NgModule({
   declarations: [AppComponent],

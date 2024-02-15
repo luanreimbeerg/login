@@ -23,9 +23,9 @@ export class RestrictedGuardService implements CanActivate {
       return this.unauthorized();
     }
 
-    // if (this.sessionService.hasTokenExpirated()) {
-    //   return this.unauthorized();
-    // }
+    if (this.sessionService.hasTokenExpirated()) {
+      return this.unauthorized();
+    }
 
     return true;
   }
