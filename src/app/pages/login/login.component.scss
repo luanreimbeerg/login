@@ -18,4 +18,10 @@
       cursor: pointer;
     }
   }
+
+  .login__google {
+    display: flex;
+    justify-content: center;
+    margin-block-start: 1rem;
+  }
 }

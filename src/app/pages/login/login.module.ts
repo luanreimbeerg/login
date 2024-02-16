@@ -6,6 +6,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 
+import { SocialLoginModule } from '@abacritt/angularx-social-login';
+
 import { LoginRoutingModule } from './login-routing.module';
 import { LoginComponent } from './login.component';
 
@@ -20,6 +22,7 @@ import { LoginComponent } from './login.component';
     ReactiveFormsModule,
     FormsModule,
     MatFormFieldModule,
+    SocialLoginModule,
   ],
 })
 export class LoginModule {}
