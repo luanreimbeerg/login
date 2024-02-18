@@ -1,12 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { HttpErrorResponse } from '@angular/common/http';
 
 import moment from 'moment';
+import { Subscription, finalize } from 'rxjs';
 
 import { FormErrorMixin } from '../../_shared/mixins/form-error.mixin';
 import { MixinHandler } from '../../_shared/mixins/mixin-handler';
 import { StorageService } from '../../_shared/services/storage.service';
+import { AuthService } from '../../_shared/services/auth.service';
+import { responseAuthModel } from '../../_shared/models/auth.model';
 
 @Component({
   selector: 'app-login',
@@ -19,6 +23,8 @@ export class LoginComponent implements OnInit {
   public hide: boolean = false;
   public loading: boolean = false;
 
+  private subscription = new Subscription();
+
   public hasError!: (
     controlName: string,
     errorName: string,
@@ -28,7 +34,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private router: Router,
-    private storageService: StorageService
+    private storageService: StorageService,
+    private authService: AuthService
   ) {}
 
   ngOnInit(): void {
@@ -38,7 +45,7 @@ export class LoginComponent implements OnInit {
 
   private buildForm(): void {
     this.form = this.fb.group({
-      email: ['', [Validators.required, Validators.email]],
+      username: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required],
     });
   }
@@ -48,27 +55,39 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(): void {
-    const mockToken =
-      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0Ijo0MTAyNDQ0ODAwfQ.nFvIVrG4lw3sNVjYNsl8fwgO60F37Q-X9nRfbyD71NQ';
     this.loading = true;
-    if (this.form.get('password')?.value === 'Test@1234') {
-      this.storageService.setItem('bearer', mockToken);
-      const jwt = this.storageService.getjwt(mockToken);
 
-      this.storageService.setItem(
-        'tokenExpires',
-        moment(jwt.iat * 1000)
-          .format()
-          .toLocaleString()
-      );
+    this.subscription.add(
+      this.authService
+        .login(this.form.getRawValue())
+        .pipe(finalize(() => (this.loading = false)))
+        .subscribe({
+          next: (next) => this.loginSuccess(next),
+          error: (err) => this.loginError(err),
+        })
+    );
+  }
 
-      this.storageService.setItem('name', jwt.name);
+  loginSuccess(resp: responseAuthModel): void {
+    this.storageService.setItem('bearer', resp.access_token);
+    const jwt = this.storageService.getjwt(resp.access_token);
 
-      this.router.navigate(['/dashboard']);
-      this.loading = false;
-    } else {
-      this.validPassWord = true;
-      this.loading = false;
-    }
+    this.storageService.setItem(
+      'tokenExpires',
+      moment(jwt.iat * 1000)
+        .format()
+        .toLocaleString()
+    );
+
+    this.storageService.setItem('name', jwt.username);
+
+    this.router.navigate(['/dashboard']);
+  }
+  loginError(err: HttpErrorResponse): void {
+    this.validPassWord = true;
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 }
