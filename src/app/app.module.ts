@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientJsonpModule, HttpClientModule } from '@angular/common/http';
 
 import {
-  FacebookLoginProvider,
   GoogleLoginProvider,
   SocialAuthServiceConfig,
 } from '@abacritt/angularx-social-login';
@@ -15,7 +15,13 @@ import { StorageService } from './_shared/services/storage.service';
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    HttpClientModule,
+    HttpClientJsonpModule,
+  ],
   providers: [
     {
       provide: 'SocialAuthServiceConfig',

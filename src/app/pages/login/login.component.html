@@ -9,13 +9,13 @@
           matInput
           placeholder="Digite seu endereço de e-mail"
           required
-          formControlName="email"
+          formControlName="username"
         />
         <mat-icon class="icon" matSuffix>mail</mat-icon>
-        <mat-error *ngIf="hasError('email', 'required', form)">
+        <mat-error *ngIf="hasError('username', 'required', form)">
           Campo <strong>Email</strong> obrigatório!
         </mat-error>
-        <mat-error *ngIf="hasError('email', 'email', form)">
+        <mat-error *ngIf="hasError('username', 'email', form)">
           <strong>E-mail</strong> inválido!
         </mat-error>
       </mat-form-field>

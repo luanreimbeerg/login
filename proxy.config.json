@@ -1,0 +1,8 @@
+{
+  "/api-login-box/*": {
+    "target": "http://localhost:3000/",
+    "secure": true,
+    "changeOrigin": true,
+    "pathRewrite": { "^/api-login-box": "" }
+  }
+}

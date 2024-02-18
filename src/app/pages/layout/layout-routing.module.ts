@@ -6,15 +6,6 @@ const routes: Routes = [
   {
     path: '',
     component: LayoutComponent,
-    children: [
-      {
-        path: 'select-dog',
-        loadChildren: () =>
-          import('./../select-dog/select-dog.module').then(
-            (m) => m.SelectDogModule
-          ),
-      },
-    ],
   },
 ];
 
