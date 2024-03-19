@@ -1,8 +1,14 @@
 {
   "/api-login-box/*": {
-    "target": "http://localhost:3000/",
+    "target": "http://localhost:3000/auth/",
     "secure": true,
     "changeOrigin": true,
     "pathRewrite": { "^/api-login-box": "" }
+  },
+  "/api-user-box/*": {
+    "target": "http://localhost:3000/users/",
+    "secure": true,
+    "changeOrigin": true,
+    "pathRewrite": { "^/api-user-box": "" }
   }
 }

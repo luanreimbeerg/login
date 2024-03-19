@@ -9,11 +9,12 @@ export class SessionService {
   constructor(private storageService: StorageService) {}
 
   public hasJwt(): boolean {
-    return !!this.storageService.getItem('bearer');
+    return !!this.storageService.getItem('accessToken');
   }
 
   public hasTokenExpirated(): boolean {
-    const expireDate = this.storageService.getItem('token-expires');
+    const expireDate = this.storageService.getItem('tokenExpires');
+
     if (expireDate) {
       return moment().isAfter(moment(expireDate));
     } else {

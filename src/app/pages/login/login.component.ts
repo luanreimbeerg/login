@@ -69,12 +69,12 @@ export class LoginComponent implements OnInit {
   }
 
   loginSuccess(resp: responseAuthModel): void {
-    this.storageService.setItem('bearer', resp.access_token);
+    this.storageService.setItem('accessToken', resp.access_token);
     const jwt = this.storageService.getjwt(resp.access_token);
 
     this.storageService.setItem(
       'tokenExpires',
-      moment(jwt.iat * 1000)
+      moment(jwt.exp * 1000)
         .format()
         .toLocaleString()
     );

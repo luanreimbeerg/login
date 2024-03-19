@@ -1,12 +1,18 @@
 <section class="flex p-6 border-b-2 border-purple justify-between">
   <div
     class="title flex items-center gap-4 cursor-pointer"
-    (click)="navegateHome()"
+    (click)="redirectTo('/dashboard')"
   >
     <mat-icon>school</mat-icon>
     <span>Bem vindo {{ name }}</span>
   </div>
-  <div></div>
+  <div
+    (click)="redirectTo('/dashboard/users')"
+    class="flex gap-2 items-center cursor-pointer"
+  >
+    <mat-icon>person</mat-icon>
+    <span>Usuários</span>
+  </div>
   <div class="logout cursor-pointer" (click)="logout()">
     <mat-icon>logout</mat-icon>
   </div>

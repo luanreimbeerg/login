@@ -1,6 +1,7 @@
 import { LayoutModule } from './pages/layout/layout.module';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { RestrictedGuardService } from './_shared/can-activate/restricted-guard.service';
 
 const routes: Routes = [
   {
@@ -14,11 +15,6 @@ const routes: Routes = [
       import('./pages/layout/layout.module').then((m) => m.LayoutModule),
   },
   { path: '', redirectTo: 'signin', pathMatch: 'full' },
-  {
-    path: 'layout',
-    loadChildren: () =>
-      import('./pages/layout/layout.module').then((m) => m.LayoutModule),
-  },
   { path: '**', redirectTo: 'signin', pathMatch: 'full' },
 ];
 

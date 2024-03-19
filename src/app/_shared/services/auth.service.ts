@@ -16,7 +16,7 @@ export class AuthService {
 
   public login(requestBody: requestAuthModel): Observable<responseAuthModel> {
     return this.http
-      .post<responseAuthModel>(`${this.urlAuth}/auth/login`, requestBody)
+      .post<responseAuthModel>(`${this.urlAuth}/login`, requestBody)
       .pipe(map((response) => new responseAuthModel(response)));
   }
 }
