@@ -1,0 +1,6 @@
+<section [ngClass]="data.type" class="custom-snackbar">
+  <span>{{ data.message }}</span>
+  <button mat-icon-button (click)="closeSnackbar()">
+    <mat-icon>close</mat-icon>
+  </button>
+</section>

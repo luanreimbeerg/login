@@ -1,0 +1,40 @@
+.custom-snackbar {
+  margin: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.25rem;
+  border-radius: 0.625rem;
+  color: white;
+
+  span {
+    font-size: 0.8rem;
+    line-height: 1rem;
+  }
+  s button {
+    display: flex;
+    align-items: center;
+    width: 1rem;
+    height: 1rem;
+    line-height: 0;
+
+    .mat-icon {
+      width: 1.25rem;
+      height: 1.25rem;
+      font-size: 1.25rem;
+      line-height: 1.25rem;
+    }
+  }
+
+  &.error {
+    background-color: #b30021;
+  }
+
+  &.info {
+    background-color: #faa42c;
+  }
+
+  &.success {
+    background-color: #36c38c;
+  }
+}
