@@ -1,0 +1,29 @@
+.custom-snackbar-panel {
+  display: flex !important;
+  justify-content: center;
+  width: 100vw;
+  max-width: unset !important;
+  min-width: unset !important;
+  padding: 0 !important;
+  margin: 5.5rem 0 0 5.5rem !important;
+
+  :first-child {
+    flex: 100%;
+
+    :first-child {
+      flex: 100%;
+
+      app-custom-snackbar {
+        flex: 100%;
+      }
+    }
+  }
+}
+
+.mat-snack-bar-container {
+  border-radius: 11px !important;
+  color: transparent !important;
+  background: transparent !important;
+  box-shadow: 0px 0px 0px 0px transparent, 0px 0px 0px 0px transparent,
+    0px 0px 00px 0px transparent !important;
+}
