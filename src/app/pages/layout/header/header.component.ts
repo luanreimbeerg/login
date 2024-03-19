@@ -20,16 +20,12 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  public redirectSelectDog(): void {
-    this.router.navigate(['/select-dog']);
-  }
-
-  public navegateHome(): void {
-    this.router.navigate(['/dashboard']);
+  public redirectTo(route: string): void {
+    this.router.navigate([route]);
   }
 
   public logout(): void {
     this.sessionService.logoff();
-    this.router.navigate(['/login']);
+    this.redirectTo('/login');
   }
 }
